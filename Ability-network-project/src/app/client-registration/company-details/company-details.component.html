@@ -1,0 +1,63 @@
+<form [formGroup]="companydetailsform">
+    <div class='form-group'>
+        <input type='text' formControlName='stateDepartment' placeholder="State Department*" required>
+        <br>
+        <span class="text-danger"
+        *ngIf="(companydetailsform.controls.stateDepartment.touched || submitted) && companydetailsform.controls.stateDepartment.errors?.required">
+        State Department is required
+        </span>
+    </div>
+    <div class='form-group'>
+        <input type='text' formControlName='stateDivision' placeholder="State Division*" required>
+        <br>
+        <span class="text-danger"
+        *ngIf="(companydetailsform.controls.stateDivision.touched || submitted) && companydetailsform.controls.stateDivision.errors?.required">
+        State Division is required
+        </span>
+    </div>
+    <div class='form-group' style="width: 100%;">
+       
+    </div>
+    <div class='form-group'>
+        <input type='text' formControlName='address' placeholder="Address*" required>
+        <br>
+        <span class="text-danger"
+        *ngIf="(companydetailsform.controls.address.touched || submitted) && companydetailsform.controls.address.errors?.required">
+        Address is required
+        </span>
+    </div>
+    <div class='form-group'>
+        <input type='text' formControlName='city' placeholder="City*" required>
+        <br>
+        <span class="text-danger"
+        *ngIf="(companydetailsform.controls.city.touched || submitted) && companydetailsform.controls.city.errors?.required">
+        City is required
+        </span>
+    </div>
+    <div class='form-group'>
+        <input type='number' formControlName='zipCode' placeholder="Zip Code*" required>
+        <br>
+        <span class="text-danger"
+        *ngIf="(companydetailsform.controls.zipCode.touched || submitted) && companydetailsform.controls.zipCode.errors?.required">
+        Zip Code is required
+        </span>
+        <span class="text-danger"
+        *ngIf="companydetailsform.controls.zipCode.errors?.minlength">
+        min length 5 is Required
+        </span>
+    </div>
+    <div class='form-group'>
+        <select  formControlName='county' placeholder="County*" required>
+            <option value="" disabled selected>Select County*</option>
+            <option *ngFor="let county of counties">{{county}}</option>
+        </select>
+        <br>
+        <span class="text-danger"
+        *ngIf="(companydetailsform.controls.county.touched || submitted) && companydetailsform.controls.county.errors?.required">
+        County is required
+        </span>
+    </div>
+    
+   
+
+</form>

@@ -1,0 +1,152 @@
+<form [formGroup]=" positionDetailsForm">
+    <div class='form-group'>
+        <select formControlName='projectTitle' placeholder="ProjectTitle*" required>
+            <option value="" disabled selected>Select ProjectTitle*</option>
+            <option *ngFor="let projectTitle of projectTitles">{{projectTitle}}</option>
+        </select> <br>
+        <span class="text-danger"
+            *ngIf="( positionDetailsForm.controls.projectTitle.touched || submitted) &&  positionDetailsForm.controls.projectTitle.errors?.required">
+            Project Title is required
+        </span>
+    </div>
+    <div class='form-group' style="width: 100%;    padding-left: 1%;">
+        <input type='checkbox' (click)="fillAdress()" required>
+
+        <span> Same As Company Address </span>
+    </div>
+
+    <div class='form-group'>
+        <input type='text' formControlName='address' placeholder="Address*" required>
+        <br>
+        <span class="text-danger"
+            *ngIf="( positionDetailsForm.controls.address.touched || submitted) &&  positionDetailsForm.controls.address.errors?.required">
+            Address is required
+        </span>
+    </div>
+    <div class='form-group'>
+        <input type='text' formControlName='city' placeholder="City*" required>
+        <br>
+        <span class="text-danger"
+            *ngIf="( positionDetailsForm.controls.city.touched || submitted) &&  positionDetailsForm.controls.city.errors?.required">
+            City is required
+        </span>
+    </div>
+    <div class='form-group'>
+        <input type='number' formControlName='zipCode' placeholder="Zip Code*" required>
+        <br>
+        <span class="text-danger"
+            *ngIf="( positionDetailsForm.controls.zipCode.touched || submitted) &&  positionDetailsForm.controls.zipCode.errors?.required">
+            Zip Code is required
+        </span>
+        <span class="text-danger" *ngIf=" positionDetailsForm.controls.zipCode.errors?.minlength">
+            min length 5 is Required
+        </span>
+    </div>
+    <div class='form-group'>
+        <select formControlName='county' placeholder="County*" required>
+            <option value="" disabled selected>Select County*</option>
+            <option *ngFor="let county of counties">{{county}}</option>
+        </select>
+        <br>
+        <span class="text-danger"
+            *ngIf="( positionDetailsForm.controls.county.touched || submitted) &&  positionDetailsForm.controls.county.errors?.required">
+            County is required
+        </span>
+    </div>
+    <div class='form-group' style="width: 100%;">
+
+    </div>
+    <div class='form-group'>
+        <input type='text' formControlName='hourlyWage' placeholder="hourly Wage*" required>
+        <br>
+        <span class="text-danger"
+            *ngIf="( positionDetailsForm.controls.hourlyWage.touched || submitted) &&  positionDetailsForm.controls.hourlyWage.errors?.required">
+            Hourly Wage is required
+        </span>
+    </div>
+    <div class='form-group' style="width: 100%;padding-left: 1%;">
+
+        <span> Schedule:
+        </span>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span>
+            <input type='checkbox' required formControlName='schedule' name="schedule">&nbsp;Monday&nbsp;&nbsp;&nbsp;
+            <input type='checkbox' required formControlName='schedule' name="schedule">&nbsp;Tuesday&nbsp;&nbsp;&nbsp;
+            <input type='checkbox' required formControlName='schedule' name="schedule">&nbsp;Wednesday&nbsp;&nbsp;&nbsp;
+            <input type='checkbox' required formControlName='schedule' name="schedule">&nbsp;Thursday&nbsp;&nbsp;&nbsp;
+            <input type='checkbox' required formControlName='schedule' name="schedule">&nbsp;Friday&nbsp;&nbsp;&nbsp;
+            <input type='checkbox' required formControlName='schedule' name="schedule">&nbsp;Saturday&nbsp;&nbsp;&nbsp;
+            <input type='checkbox' required formControlName='schedule' name="schedule">&nbsp;Sunday
+
+
+        </span>
+        <span class="text-danger"
+            *ngIf="( positionDetailsForm.controls.schedule.touched || submitted) &&  positionDetailsForm.controls.schedule.errors?.required">
+            Schedule is required
+        </span>
+    </div>
+    <div class='form-group'>
+        <input type='text' formControlName='scheduledHours' placeholder="Scheduled hours to be Worked*" required>
+        <br>
+        <!-- <span class="text-danger"
+        *ngIf="( positionDetailsForm.controls.scheduledHours.touched || submitted) &&  positionDetailsForm.controls.scheduledHours.errors?.required">
+        Scheduled hours to be Worked is required
+        </span> -->
+    </div>
+    <div class='form-group'>
+        <input type='time' formControlName='shiftStartTime' placeholder="Shift Start Time*" required>
+
+        <br>
+        <span class="text-danger"
+            *ngIf="( positionDetailsForm.controls.shiftStartTime.touched || submitted) &&  positionDetailsForm.controls.shiftStartTime.errors?.required">
+            Shift Start Time is required
+        </span>
+    </div>
+
+    <div class='form-group'>
+        <input type='time' formControlName='shiftEndTime' placeholder="Shift End Time*" required>
+
+        <br>
+        <span class="text-danger"
+            *ngIf="( positionDetailsForm.controls.shiftEndTime.touched || submitted) &&  positionDetailsForm.controls.shiftEndTime.errors?.required">
+            Shift End Time is required
+        </span>
+    </div>
+
+    <div class='form-group' style="width: 100%;padding-left: 1%;">
+
+        <span> Duration Job Order(If Known):
+        </span>
+    </div>
+
+    <div class='form-group'>
+        <input type='date' formControlName='startDate' placeholder="Start Date*" required>
+
+        <br>
+        <span class="text-danger"
+            *ngIf="( positionDetailsForm.controls.startDate.touched || submitted) &&  positionDetailsForm.controls.startDate.errors?.required">
+            Start Date is required
+        </span>
+    </div>
+
+    <div class='form-group'>
+        <input type='date' formControlName='endDate' placeholder="End Date">
+
+        <br>
+        <!-- <span class="text-danger"
+        *ngIf="( positionDetailsForm.controls.endDate.touched || submitted) &&  positionDetailsForm.controls.endDate.errors?.required">
+        End Date is required
+        </span> -->
+    </div>
+    <div class='form-group' style="width: 117%;">
+
+        <input type='text' class="jobDescription" formControlName='jobDescription' placeholder="Job Description*" data-toggle="tooltip" data-placement="top" title="Please enter required daily tasks required for this position." required>
+      
+        <br>
+        <span class="text-danger"
+            *ngIf="( positionDetailsForm.controls.projectTitle.touched || submitted) &&  positionDetailsForm.controls.projectTitle.errors?.required">
+            Job Description is required
+        </span>
+    </div>
+</form>

@@ -1,0 +1,72 @@
+<form [formGroup]=" billingContactDetailsForm">
+    <div class='form-group'>
+        <input type='text' formControlName='contactName' placeholder="Contact Name">
+        <br>
+     
+    </div>
+    <div class='form-group'>
+        <input type='number' formControlName='phoneNumber' placeholder="Phone Number*" required>
+        <br>
+        <span class="text-danger"
+        *ngIf="( billingContactDetailsForm.controls.phoneNumber.touched || submitted) &&  billingContactDetailsForm.controls.phoneNumber.errors?.required">
+        Phone Number is required
+        </span>
+    </div>
+    <div class='form-group'>
+        <input type='email' formControlName='email' placeholder="Email*" required>
+        <br>
+        <span class="text-danger"
+        *ngIf="( billingContactDetailsForm.controls.email.touched || submitted) &&  billingContactDetailsForm.controls.email.errors?.required">
+        Email is required
+        </span>
+    </div>
+    <div class='form-group' style="width: 100%;padding-left: 1%;">
+        <input type='checkbox' (click)='fillAdress()' required>
+        
+        <span>        Same As Company Address
+        </span>
+    </div>
+    
+    <div class='form-group'>
+        <input type='text' formControlName='address' placeholder="Address*" required>
+        <br>
+        <span class="text-danger"
+        *ngIf="( billingContactDetailsForm.controls.address.touched || submitted) &&  billingContactDetailsForm.controls.address.errors?.required">
+        Address is required
+        </span>
+    </div>
+    <div class='form-group'>
+        <input type='text' formControlName='city' placeholder="City*" required>
+        <br>
+        <span class="text-danger"
+        *ngIf="( billingContactDetailsForm.controls.city.touched || submitted) &&  billingContactDetailsForm.controls.city.errors?.required">
+        City is required
+        </span>
+    </div>
+    <div class='form-group'>
+        <input type='number' formControlName='zipCode' placeholder="Zip Code*" required>
+        <br>
+        <span class="text-danger"
+        *ngIf="( billingContactDetailsForm.controls.zipCode.touched || submitted) &&  billingContactDetailsForm.controls.zipCode.errors?.required">
+        Zip Code is required
+        </span>
+        <span class="text-danger"
+        *ngIf=" billingContactDetailsForm.controls.zipCode.errors?.minlength">
+        min length 5 is Required
+        </span>
+    </div>
+    <div class='form-group'>
+        <select  formControlName='county' placeholder="County*" required>
+            <option value="" disabled selected>County*</option>
+            <option *ngFor="let county of counties">{{county}}</option>
+        </select>
+        <br>
+        <span class="text-danger"
+        *ngIf="( billingContactDetailsForm.controls.county.touched || submitted) &&  billingContactDetailsForm.controls.county.errors?.required">
+        County is required
+        </span>
+    </div>
+    
+   
+
+</form>

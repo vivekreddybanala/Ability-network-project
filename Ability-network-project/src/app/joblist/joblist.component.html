@@ -1,0 +1,189 @@
+<div class="container">
+  <div class="fadeIn first">
+    <img src="assets/logo.png" id="icon" alt="User Icon" />
+    <hr />
+  </div>
+  <form [formGroup]="jobList">
+    <div style="margin-bottom: 20px;">
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="jobTypes" formControlName="jobTypes" value="open jobs"
+          id="openjobs" checked />
+        <label class="form-check-label" for="openjobs">Open jobs</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="jobTypes" formControlName="jobTypes" value="active jobs"
+          id="activejobs" />
+        <label class="form-check-label" for="activejobs">Active jobs</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="jobTypes" formControlName="jobTypes" value="closed jobs"
+          id="closedjobs" />
+        <label class="form-check-label" for="activejobs">Closed jobs</label>
+      </div>
+    </div>
+  </form>
+  <div class="row">
+    <div class="col-md-12 table-responsive" *ngIf="jobList.value.jobTypes=='open jobs'">
+      <table class="table table-striped custom-table">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">position Title</th>
+          <th scope="col">Supervisor Name</th>
+          <th scope="col">State Department </th>
+          <th scope="col">State Division</th>
+          <th scope="col">Pay Rate</th>
+          <!-- <th scope="col">Subcontractor</th> -->
+          <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let job of jobs">
+          <td scope="row">{{ job.id }}</td>
+          <td><a href="https://staffing.apptrino.com/delarf/ClientRegistration/ClientRegistrationDelarf.aspx">{{ job.positionTitle }}</a></td>
+          <td>{{ job.supervisorName }}</td>
+          <td>{{ job.stateDepartment }}</td>
+          <td>{{ job.stateDivision }}</td>
+          <td>{{ job.payRate }}</td>
+          <!-- <td>
+            <select class="form-control" id="exampleFormControlSelect1">
+              <option value="" selected disabled>Select Subcontractor</option>
+              <option>Sub Name 1</option>
+              <option>Sub Name 2</option>
+              <option>Sub Name 3</option>
+            </select>
+          </td> -->
+          <td>
+            <button class="btn btn-primary" (click)="open(content)">Assign Subcontractor</button>&nbsp;&nbsp;
+            <button class="btn btn-primary" (click)="open(content)">Close Job</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      
+      <div class="d-flex justify-content-between p-2 custom-pagination">
+        <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshCountries()">
+        </ngb-pagination>
+      
+        <select class="custom-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshCountries()">
+          
+          <option [ngValue]="5">5 items per page</option>
+          <option [ngValue]="10">10 items per page</option>
+          <option [ngValue]="20">20 items per page</option>
+        </select>
+      </div>
+      </div>
+    </div>
+    <div class="row clearfix">
+      <div class="col-md-12 table-responsive" *ngIf="jobList.value.jobTypes=='active jobs'">
+        <table class="table table-striped custom-table">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">position Title</th>
+            <th scope="col">Supervisor Name</th>
+            <th scope="col">State Department</th>
+            <th scope="col">State Division</th>
+            <th scope="col">Pay Rate</th>
+            <th scope="col">Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let job of jobs">
+            <td scope="row">{{ job.id }}</td>
+            <td><a href="https://staffing.apptrino.com/delarf/ClientRegistration/ClientRegistrationDelarf.aspx">{{ job.positionTitle }}</a></td>
+            <td>{{ job.supervisorName }}</td>
+            <td>{{ job.stateDepartment }}</td>
+            <td>{{ job.stateDivision }}</td>
+            <td>{{ job.payRate }}</td>
+            <td>
+              <button class="btn btn-primary" (click)="open(content)">Close Job</button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        
+        <div class="d-flex justify-content-between p-2 custom-pagination">
+          <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshCountries()">
+          </ngb-pagination>
+        
+          <select class="custom-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshCountries()">
+            
+            <option [ngValue]="5">5 items per page</option>
+            <option [ngValue]="10">10 items per page</option>
+            <option [ngValue]="20">20 items per page</option>
+          </select>
+        </div>
+      </div>
+    </div>
+      <div class="col-md-12 table-responsive" *ngIf="jobList.value.jobTypes=='closed jobs'">
+        <table class="table table-striped custom-table">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">position Title</th>
+            <th scope="col">Supervisor Name</th>
+            <th scope="col">State Department</th>
+            <th scope="col">State Division</th>
+            <th scope="col">Pay Rate</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let job of jobs">
+            <td scope="row">{{ job.id }}</td>
+            <td><a href="https://staffing.apptrino.com/delarf/ClientRegistration/ClientRegistrationDelarf.aspx">{{ job.positionTitle }}</a></td>
+            <td>{{ job.supervisorName }}</td>
+            <td>{{ job.stateDepartment }}</td>
+            <td>{{ job.stateDivision }}</td>
+            <td>{{ job.payRate }}</td>
+          </tr>
+          </tbody>
+        </table>
+        <div class="d-flex justify-content-between p-2 custom-pagination">
+          <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshCountries()">
+          </ngb-pagination>
+        
+          <select class="custom-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshCountries()">
+            
+            <option [ngValue]="5">5 items per page</option>
+            <option [ngValue]="10">10 items per page</option>
+            <option [ngValue]="20">20 items per page</option>
+          </select>
+        </div>
+      </div>
+      <div class="text-center" style="width: 100%;">
+        <input type="submit" class="btn btn-primary btn-sm" name="btnsubmit" value="Submit"
+          onclick="return EmploymentValidate();" id="btnsubmit" tabindex="39">
+      </div>
+     <!-- modal --> 
+      <ng-template #content let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title"> Close Jobs</h4>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="dateOfBirth">End Date*</label>
+              <div class="input-group">
+                <input id="dateOfBirth" class="form-control" placeholder="End Date" name="dp" ngbDatepicker #dp="ngbDatepicker">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="explain">Explain*</label>
+              <div class="input-group">
+                <textarea type="text" class="form-control" maxlength="500"></textarea>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+        </div>
+      </ng-template>
+    </div>

@@ -1,0 +1,36 @@
+<p style="text-align: center;"><b>State Use - Temporary Staff Request</b></p>
+
+<div class="container-fluid" style="background-color: #56baed;">
+<br>
+    <div class="card bg-light mb-3" *ngIf='!conformPage'>
+        <!-- LOGO -->
+        <div class="card-body">
+            <img src="https://staffing.apptrino.com/clients/delarf/images/logo/logo.png">
+
+            <div><br>
+
+                <!-- Page Content -->
+                <div class="card-body">
+                    <app-client-registration-page (newItemEvent)="formsubmited($event)"></app-client-registration-page>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <br>
+    <div class="card bg-light mb-3" *ngIf='conformPage'>
+        <div class="card-body">
+            <img src="https://staffing.apptrino.com/clients/delarf/images/logo/logo.png">
+
+            <div><br>
+                <div class="card-body">
+                    <app-conformation-page [Mynum]="submitNumber"></app-conformation-page>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

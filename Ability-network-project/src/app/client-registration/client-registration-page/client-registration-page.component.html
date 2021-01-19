@@ -1,0 +1,74 @@
+<div class="wrapper fadeInDown">
+
+    <br>
+    <div class="card bg-light mb-3 fadeIn first" style="width: 90%;">
+        <div class="card-header" (click)="toggle(companyDetails)">Company Details
+            <svg style="float: right;"  *ngIf="companyDetails.style.display == 'none' || companyDetails.style.display == ''"  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-up-fill" viewBox="0 0 16 16">
+            <path d="M7.247 4.86l-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/>
+          </svg>
+          <svg style="float: right;" *ngIf="companyDetails.style.display == 'block'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+            <path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+          </svg>
+        </div>
+        <div #companyDetails class="card-body">
+            <app-company-details #CompanyDetails></app-company-details>
+
+        </div>
+    </div>
+    <br>
+
+    <div class="card bg-light mb-3 fadeIn first" style="width: 90%;">
+        <div class="card-header" (click)="toggle(billingDetails)">Billing Contact Details
+            <svg style="float: right;"*ngIf="billingDetails.style.display == 'none' || billingDetails.style.display == ''" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-up-fill" viewBox="0 0 16 16">
+                <path d="M7.247 4.86l-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/>
+              </svg>
+              <svg style="float: right;"  *ngIf="billingDetails.style.display == 'block'"   xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                <path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+              </svg>
+
+        </div>
+        <div #billingDetails class="card-body">
+            <app-billing-contact-details [companydetailsComponent]="CompanyDetails" #BillingDetails></app-billing-contact-details>
+
+        </div>
+    </div>
+    <br>
+
+    <div class="card bg-light mb-3 fadeIn third" style="width: 90%;">
+        <div class="card-header" (click)="toggle(positionDetails)">Position Details
+            <svg style="float: right;" *ngIf="positionDetails.style.display == 'none' || positionDetails.style.display == ''" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-up-fill" viewBox="0 0 16 16">
+                <path d="M7.247 4.86l-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/>
+              </svg>
+              <svg style="float: right;" *ngIf="positionDetails.style.display == 'block'"   xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                <path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+              </svg>
+        </div>
+        <div #positionDetails class="card-body">
+            <app-position-details [companydetailsComponent]="CompanyDetails" #PositionDetails></app-position-details>
+
+        </div>
+    </div>
+    <br>
+
+    <div class="card bg-light mb-3 fadeIn fourth" style="width: 90%;">
+        <div class="card-header" *ngIf="supervisorDetails.style.display == 'none' || supervisorDetails.style.display == ''" (click)="toggle(supervisorDetails)">Supervisor Details
+            <svg style="float: right;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-up-fill" viewBox="0 0 16 16">
+                <path d="M7.247 4.86l-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/>
+              </svg>
+              <svg style="float: right;" *ngIf="supervisorDetails.style.display == 'block'"   xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                <path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+              </svg>
+        </div>
+        <div #supervisorDetails class="card-body">
+            <app-supervisor-details #SupervisorDetails></app-supervisor-details>
+
+        </div>
+    </div>
+
+    <br>
+    <div style="text-align: center;" class='fadeIn fourth'>
+        <input type="button" value='Submit' (click)="submit()" >
+
+    </div>
+    <br>
+</div>
